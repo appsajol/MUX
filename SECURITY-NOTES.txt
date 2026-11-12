@@ -1,0 +1,7 @@
+MUX V2.6 SECURITY NOTES
+
+The Firebase API key in this client is a public client identifier, not an admin credential. Do not add service-account JSON or Admin SDK private keys to this package.
+
+The current Realtime Database rules allow any authenticated Firebase user to read and write the database. This is not adequate for a private invite-only group. The client does not claim to enforce membership or protect a secret invite code. Before public use, implement trusted membership provisioning (for example, a trusted backend or manual admin approval) and RTDB rules that check membership at each read/write path.
+
+Do not use test-mode/public rules. Do not share account passwords or refresh tokens. The refresh token is stored locally in ~/.mux/config.json with restrictive file permissions where supported.
