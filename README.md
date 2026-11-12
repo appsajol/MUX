@@ -27,45 +27,43 @@ Requirements
 Installation
 
 Open Termux and run these commands:
-
+```
 pkg update -y
 pkg install git python python-pip -y
 git clone https://github.com/appsajol/mux.git
 cd mux
 bash install.sh
-
+```
 After installation, launch MUX:
-
+```
 mux
-
+```
 Update MUX
 
 To get the latest version from GitHub:
-
+```
 cd ~/mux
 git pull origin main
 bash install.sh
-
+```
 Then restart MUX:
-
+```
 mux
-
+```
 Uninstall MUX
-
 To remove the MUX launcher:
-
+```
 rm -f ~/.local/bin/mux
-
+```
 To also remove the downloaded source folder:
-
+```
 rm -rf ~/mux
-
+```
 Optional: Delete your local MUX data
-
 This permanently removes local configuration and SQLite chat history:
-
+```
 rm -rf ~/.mux
-
+```
 Do not run the optional command if you want to keep your local data.
 
 Chat Commands
@@ -104,5 +102,4 @@ Developer
 GitHub: https://github.com/appsajol
 
 License
-
 Choose and add an appropriate open-source license before distributing this project.
