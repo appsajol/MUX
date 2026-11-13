@@ -26,32 +26,36 @@ A lightweight, Firebase-powered global group chat application built with Python 
 🚀 Installation
 
 Step 1: Update Termux
-
+```
 pkg update && pkg upgrade -y
-
+```
 Step 2: Install Git
-
+```
 pkg install git -y
-
+```
 Step 3: Clone the Repository
-
+```
 git clone https://github.com/appsajol/mchat.git
-
+```
 Step 4: Open the Project Folder
-
+```
 cd mchat
-
+```
 Step 5: Run the Installer
-
+```
 bash install.sh
-
-The installer will install the required dependencies and configure the "mchat" command.
+```
+The installer will install the required dependencies and configure the 
+```
+mchat
+```
+ command.
 
 ▶️ Run mChat
 
 After installation, you can launch the application from any Termux directory:
 
-mchat
+*mchat*
 
 📱 Main Menu
 
@@ -87,15 +91,15 @@ Updating the application does not intentionally remove existing local chat histo
 🔄 Update mChat
 
 To update the application:
-
+```
 cd ~/mchat
 git pull
 bash install.sh
-
+```
 Then launch:
-
+```
 mchat
-
+```
 🛠️ Technologies Used
 
 - Python 3
@@ -128,7 +132,6 @@ This project is open-source. A license file should be added to the repository to
 
 ---
 
-⭐ If you like this project, give the repository a Star on GitHub!
+⭐ If you like this project, give the repository a Star on GitHub
 
-GitHub: https://github.com/appsajol/mchat.git
-
+GitHub: https://github.com/appsajol/mchat.ggit
