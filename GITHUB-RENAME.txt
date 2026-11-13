@@ -1,0 +1,12 @@
+GitHub repository rename
+
+Old: https://github.com/appsajol/mux
+New target: https://github.com/appsajol/mChat
+
+This ZIP cannot rename a remote GitHub repository. On GitHub, open the old repository,
+then Settings > General > Repository name, enter mChat, and confirm Rename.
+After that, clone/push using:
+  git clone https://github.com/appsajol/mChat.git
+
+The new global Termux command is:
+  mchat

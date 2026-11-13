@@ -1,50 +1,67 @@
+
 #!/data/data/com.termux/files/usr/bin/bash
+
 set -e
 
-CYAN='\033[96m'
-GREEN='\033[92m'
-RED='\033[91m'
-RESET='\033[0m'
+APP_DIR="$HOME/.local/share/mchat"
+BIN_DIR="$HOME/.local/bin"
+SOURCE_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-echo -e "${CYAN}MUX V2.6 - CYBER NEON INSTALLER${RESET}"
+echo ""
+echo "=================================="
+echo "       mChat V2.6 INSTALLER"
+echo "          CYBER NEON"
+echo "=================================="
 
-if ! command -v pkg >/dev/null 2>&1; then
-    echo "This installer requires Termux."
+if [ ! -f "$SOURCE_DIR/mchat.py" ]; then
+    echo "ERROR: mchat.py was not found!"
+    echo "Keep install.sh and mchat.py together."
     exit 1
 fi
 
-if [ ! -f "$(dirname "$0")/mux.py" ]; then
-    echo -e "${RED}Error: mux.py not found!${RESET}"
+echo "[1/4] Installing requirements..."
+pkg install python -y
+python -m pip install requests
+
+echo "[2/4] Installing mChat..."
+mkdir -p "$APP_DIR" "$BIN_DIR"
+cp "$SOURCE_DIR/mchat.py" "$APP_DIR/mchat.py"
+
+echo "[3/4] Creating global command..."
+
+cat > "$BIN_DIR/mchat" <<'LAUNCHER'
+#!/data/data/com.termux/files/usr/bin/bash
+APP_DIR="$HOME/.local/share/mchat"
+
+if [ ! -f "$APP_DIR/mchat.py" ]; then
+    echo "mChat is not installed. Run install.sh again."
     exit 1
 fi
 
-echo "[1/5] Updating packages..."
-pkg update -y
+exec python "$APP_DIR/mchat.py" "$@"
+LAUNCHER
 
-echo "[2/5] Installing Python..."
-pkg install -y python python-pip
+chmod +x "$BIN_DIR/mchat"
 
-echo "[3/5] Installing Requests..."
-python -m pip install requests --break-system-packages
+echo "[4/4] Configuring PATH..."
 
-echo "[4/5] Installing MUX..."
-mkdir -p "$HOME/.local/bin" "$HOME/.mux"
+PROFILE="$HOME/.bashrc"
+touch "$PROFILE"
 
-cp "$(dirname "$0")/mux.py" "$HOME/.local/bin/mux"
-chmod +x "$HOME/.local/bin/mux"
-
-if ! grep -qF 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.bashrc" 2>/dev/null; then
-    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
+if ! grep -Fq 'export PATH="$HOME/.local/bin:$PATH"' "$PROFILE"; then
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$PROFILE"
 fi
 
-if ! grep -qF 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.zshrc" 2>/dev/null; then
-    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.zshrc"
-fi
+export PATH="$BIN_DIR:$PATH"
 
-echo "[5/5] Verifying..."
-python -c "import requests"
-
-export PATH="$HOME/.local/bin:$PATH"
-
-echo -e "${GREEN}MUX V2.6 INSTALLED SUCCESSFULLY!${RESET}"
-echo "Run: mux"
+echo ""
+echo "=================================="
+echo "     mChat INSTALLATION DONE!"
+echo "=================================="
+echo ""
+echo "Run from anywhere:"
+echo "mchat"
+echo ""
+echo "If command is not found, restart Termux"
+echo "or run: source ~/.bashrc"
+echo "=================================="

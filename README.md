@@ -1,105 +1,134 @@
-MUX V2.6 – Cyber Neon
+MUX Chat (mChat) V2.6 – Cyber Neon
 
-A Firebase-powered terminal chat application for Termux.
+A lightweight, Firebase-powered global group chat application built with Python for Termux on Android.
 
-MUX is a Python-based terminal application with a cyber-themed interface, Firebase Authentication, Realtime Database messaging, online presence, and local chat history.
+✨ Features
 
-Features
+- 🌐 Global Group Chat
+- 🔐 Firebase Email & Password Authentication
+- 📝 Create a New Account
+- 👤 User Profile
+- 🟢 Online / Offline Presence
+- 👥 Online Members List
+- 💬 Real-time Message Updates
+- 💾 Local SQLite Chat History
+- ⚙️ Settings Menu
+- ℹ️ About mChat
+- 🎨 Cyber Neon Terminal Interface
+- 📱 Designed for Android Termux
 
-- Cyber Neon terminal interface
-- Firebase Email/Password Authentication
-- Realtime group chat
-- Online member list
-- User presence and heartbeat
-- Local chat history using SQLite
-- Multiple terminal themes
-- Header customization
-- Simple installer
-
-Requirements
+📋 Requirements
 
 - Android device
-- "Termux" (https://github.com/termux/termux-app)
+- Termux
 - Internet connection
+
+🚀 Installation
+
+Step 1: Update Termux
+
+pkg update && pkg upgrade -y
+
+Step 2: Install Git
+
+pkg install git -y
+
+Step 3: Clone the Repository
+
+git clone https://github.com/appsajol/mchat.git
+
+Step 4: Open the Project Folder
+
+cd mchat
+
+Step 5: Run the Installer
+
+bash install.sh
+
+The installer will install the required dependencies and configure the "mchat" command.
+
+▶️ Run mChat
+
+After installation, you can launch the application from any Termux directory:
+
+mchat
+
+📱 Main Menu
+
+╔══════════════════════════════╗
+║          mChat V2.6          ║
+║       CYBER NEON EDITION     ║
+╠══════════════════════════════╣
+║  [1] Start Chat              ║
+║  [2] User Profile            ║
+║  [3] Settings                ║
+║  [4] About mChat             ║
+║  [0] Exit                    ║
+╚══════════════════════════════╝
+
+🔐 Account System
+
+Users can:
+
+- Create an account using email and password.
+- Log in with an existing account.
+- Use their own account in the global chat.
+
+🌍 Global Chat
+
+All registered users connect to the same Firebase-powered group chat.
+
+💾 Local Data
+
+Chat history and local configuration are stored on the device.
+
+Updating the application does not intentionally remove existing local chat history or configuration.
+
+🔄 Update mChat
+
+To update the application:
+
+cd ~/mchat
+git pull
+bash install.sh
+
+Then launch:
+
+mchat
+
+🛠️ Technologies Used
+
 - Python 3
-- A configured Firebase project
+- Firebase Authentication
+- Firebase Realtime Database
+- SQLite
+- REST API
+- Termux
 
-Installation
+🔒 Security
 
-Open Termux and run these commands:
-```
-pkg update -y
-pkg install git python python-pip -y
-git clone https://github.com/appsajol/mux.git
-cd mux
-bash install.sh
-```
-After installation, launch MUX:
-```
-mux
-```
-Update MUX
+- Never share your account password or authentication tokens.
+- Firebase Realtime Database Security Rules should be configured to protect user data.
+- The Firebase Web API key is client configuration, not a private server credential.
+- Never publish Firebase service account private keys or other server secrets.
 
-To get the latest version from GitHub:
-```
-cd ~/mux
-git pull origin main
-bash install.sh
-```
-Then restart MUX:
-```
-mux
-```
-Uninstall MUX
-To remove the MUX launcher:
-```
-rm -f ~/.local/bin/mux
-```
-To also remove the downloaded source folder:
-```
-rm -rf ~/mux
-```
-Optional: Delete your local MUX data
-This permanently removes local configuration and SQLite chat history:
-```
-rm -rf ~/.mux
-```
-Do not run the optional command if you want to keep your local data.
+👨‍💻 Developer
 
-Chat Commands
+Developer: Sajol
 
-Command| Description
-"/members"| Show online members
-"/history"| View chat history
-"/clear"| Clear local chat history
-"/help"| Show available commands
-"/exit"| Exit the chat
+Project: mChat
 
-Firebase Setup
+Version: 2.6
 
-MUX requires a Firebase project configured with:
+Edition: Cyber Neon
 
-1. Email/Password Authentication enabled.
-2. Realtime Database created.
-3. The correct Firebase configuration added to the application.
-4. Appropriate database security rules.
+📜 License
 
-Security notice: Do not use unrestricted database read/write rules in a public deployment. Configure authentication, group membership authorization, and message validation before allowing public use.
+This project is open-source. A license file should be added to the repository to specify the permissions and conditions for reuse.
 
-Never publish Firebase service-account private keys or other administrator credentials.
+---
 
-Project Information
+⭐ If you like this project, give the repository a Star on GitHub!
 
-- Project: MUX
-- Version: 2.6
-- Theme: Cyber Neon
-- Platform: Termux / Android
-- Language: Python
-- Backend: Firebase Realtime Database
+GitHub: https://github.com/appsajol/mchat.git
 
-Developer
-
-GitHub: https://github.com/appsajol
-
-License
-Choose and add an appropriate open-source license before distributing this project.
